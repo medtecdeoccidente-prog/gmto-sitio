@@ -1,0 +1,28 @@
+# Sitio de GMTO en Render (sitio estático, gratis). Se publican los archivos de la raíz del repositorio.
+# Para cambiar de versión del instalador, cambia solo la línea «destination» de /descargar.
+services:
+  - type: web
+    name: gmto
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: .
+    routes:
+      - type: redirect
+        source: /descargar
+        destination: https://github.com/medtecdeoccidente-prog/gmto-sitio/releases/download/v0.9.4/NICO-instalador-0.9.4.exe
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*.webp
+        name: Cache-Control
+        value: public, max-age=86400
+      - path: /*.woff
+        name: Cache-Control
+        value: public, max-age=86400
