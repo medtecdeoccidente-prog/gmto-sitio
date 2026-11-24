@@ -247,3 +247,20 @@ h1, h2, h3 { font-family: "Inter Display", "Inter", sans-serif; line-height: 1.0
   .ventana-barra i { width: 8px; height: 8px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
+
+/* Estetoscopio de Contacto: una capa detrás de la tarjeta y otra delante */
+.esteto-zona { position: relative; }
+.esteto { position: absolute; pointer-events: none; height: auto; }
+.esteto-atras { z-index: 0; }
+.esteto-frente { z-index: 2; }
+.esteto-zona > .tarjeta-vidrio { position: relative; z-index: 1; background: #FCFCFB; backdrop-filter: none; -webkit-backdrop-filter: none; }
+.contacto { padding-top: 264px; }
+.contacto .esteto { width: 260px; top: -204px; right: 0; }
+.contacto .contacto-in { padding-top: 150px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .esteto-zona > .tarjeta-vidrio { background: #1C1F27; } }
+:root[data-theme="dark"] .esteto-zona > .tarjeta-vidrio { background: #1C1F27; }
+@media (max-width: 760px) {
+  .contacto { padding-top: 173px; }
+  .contacto .esteto { width: 170px; top: -134px; }
+  .contacto .contacto-in { padding-top: 143px; }
+}
